@@ -1,0 +1,48 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap";
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, calc(100% / 7));
+  grid-gap: 0px;
+  font-size: 0.875rem;
+  border-right: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+
+  &--item {
+    height: 100px;
+    border-top: 1px solid #dfdfdf;
+    border-left: 1px solid #dfdfdf;
+
+    &--day {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      // padding: 0 5px 0 5px;
+      cursor: pointer;
+
+      &:nth-child(7n-6),
+      &:nth-child(7n) {
+        background-color: #00000014;
+      }
+
+      &.today {
+        background-color: #85c6ff;
+      }
+
+      &.disabled {
+        color: #0000005c;
+      }
+
+      &--reminders {
+        text-align: center;
+      }
+    }
+
+    &--header {
+      height: 25px;
+      text-align: center;
+      background-color: #00c4ff;
+      font-weight: 700;
+    }
+  }
+}
