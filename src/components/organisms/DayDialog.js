@@ -22,10 +22,6 @@ const DayDialog = ({ date, open, onClose }) => {
   const [expanded, setExpanded] = React.useState(false);
   const title = format(date, "EEEE, MMM dd, yyyy");
 
-  // const handleChange = (event, isExpanded) => {
-  //   setExpanded(isExpanded ? panel : false);
-  // };
-
   return (
     <Dialog
       fullScreen

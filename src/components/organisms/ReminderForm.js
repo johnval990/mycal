@@ -6,7 +6,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Box, Button, Grid, TextField } from "@mui/material";
 import { format } from "date-fns";
-import { upsertReminder } from "../../store/features/calendar";
+import { upsertReminder } from "../../store/features/calendar/calendar.thunks";
+import DeleteReminder from "../molecules/DeleteReminder";
 
 const schema = yup
   .object({
@@ -16,12 +17,12 @@ const schema = yup
       .string()
       .matches(/^([01]\d|2[0-3]):?([0-5]\d)$/, "invalid time format")
       .required(),
-    city: yup.string().max(30).required(),
+    city: yup.string().max(20).required(),
     description: yup.string().max(30).required(),
   })
   .required();
 
-const ReminderForm = ({ date, isNew, data, onSubmit }) => {
+const ReminderForm = ({ data, date, isNew, onSubmit }) => {
   const dispatch = useDispatch();
   const {
     register,
@@ -39,11 +40,9 @@ const ReminderForm = ({ date, isNew, data, onSubmit }) => {
     });
   }, [data, date, reset]);
 
-  const submitCompleted = (data) => {
-    onSubmit(data);
-    dispatch(
-      upsertReminder({ ...data, date: format(data.date, "yyyy-MM-dd") })
-    );
+  const submitCompleted = (res) => {
+    onSubmit(res);
+    dispatch(upsertReminder({ ...res, date: format(res.date, "yyyy-MM-dd") }));
     if (isNew) {
       reset({
         time: "00:00",
@@ -95,7 +94,7 @@ const ReminderForm = ({ date, isNew, data, onSubmit }) => {
             InputLabelProps={{
               shrink: true,
             }}
-            inputProps={{ ...register("city"), maxLength: "30" }}
+            inputProps={{ ...register("city"), maxLength: "20" }}
             fullWidth
             error={!!errors.city}
             helperText={errors.city?.message}
@@ -113,13 +112,23 @@ const ReminderForm = ({ date, isNew, data, onSubmit }) => {
             helperText={errors.description?.message}
           />
         </Grid>
-        <Grid item xs={12} sm={12}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          sx={{ display: "flex", columnGap: 2, flexDirection: "row-reverse" }}
+        >
           <Button type="submit" size="large" variant="contained">
             {isNew ? "Save" : "Update"}
           </Button>
+          {!isNew && <DeleteReminder id={data.id} />}
         </Grid>
 
-        <TextField type={"hidden"} inputProps={{ ...register("id") }} />
+        <TextField
+          sx={{ display: "none" }}
+          type={"hidden"}
+          inputProps={{ ...register("id") }}
+        />
       </Grid>
     </Box>
   );

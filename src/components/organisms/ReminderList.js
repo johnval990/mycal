@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-import { selectRemindersByDate } from "../../store/features/calendar";
+import { selectRemindersByDate } from "../../store/features/calendar/calendar.selectors";
 import ReminderAccordionItem from "../molecules/ReminderAccordionItem";
 import ReminderForm from "./ReminderForm";
 

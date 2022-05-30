@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { isToday } from "date-fns";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-import { countRemindersByDate } from "../../store/features/calendar";
+import { countRemindersByDate } from "../../store/features/calendar/calendar.selectors";
 
 const DayBox = ({ date, day, disabled, onClick }) => {
   const today = isToday(date);
