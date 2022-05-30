@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-import { Link } from "react-router-dom";
+import rehypeRaw from "rehype-raw";
 
 const README_PATH =
-  "https://raw.githubusercontent.com/Jobsity/ReactChallenge/main/README.md";
+  "https://raw.githubusercontent.com/johnval990/mycal/master/README.md";
 
 function Readme() {
   const [md, setMd] = useState(null);
@@ -18,13 +18,7 @@ function Readme() {
 
   return (
     <div className="readme">
-      <ReactMarkdown allowDangerousHtml children={md} />
-      {md && (
-        <>
-          <h2>Use our existing route to create you calendar!</h2>
-          <Link to="/calendar">Go to Calendar page</Link>
-        </>
-      )}
+      <ReactMarkdown rehypePlugins={[rehypeRaw]} children={md} />
     </div>
   );
 }

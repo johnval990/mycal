@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# MYCAL
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Calendar application developed in React for the management of reminders.
 
-## Available Scripts
+DEMO URL: [https://mycal.johnva.dev/calendar](https://mycal.johnva.dev/calendar)
 
-In the project directory, you can run:
+<center>
+  <img src="https://mycal.johnva.dev/MYCAL.gif" width="100%" />
+</center>
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Calendar view of the current month. (The current day is highlighted)
+- Options to change the calendar year or month.
+- Button to reset the calendar to the current month and year.
+- Visualization of the reminders for each day.
+- Options to create, edit and delete reminders.
+- Each reminder shows the weather for the selected day and city. (Info obtained from [VisualCrossing](https://www.visualcrossing.com/ "visualcrossing"))
+- Persistence of reminders created in LocalStorage.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation / Configuration
 
-### `npm test`
+### Install Dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run the following command to install all project dependencies.
 
-### `npm run build`
+```sh
+npm install
+// OR
+npm i
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Weather Integration
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In order to have the weather functionality it is necessary to create an account at [https://www.visualcrossing.com/weather-api](https://www.visualcrossing.com/weather-api) and obtain a key. This key must be added in the .env file
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Environment
 
-### `npm run eject`
+In the root of the project create the .env file with the necessary variables, example:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+REACT_APP_VISUAL_CROSSING_URL=https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services
+REACT_APP_VISUAL_CROSSING_KEY=ACCOUNT_KEY
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Run Dev Server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This command runs the app in development mode. Open http://localhost:3000 to view it in the browser.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+npm start
+```
 
-## Learn More
+The page will automatically reload if you make changes to the code. You will see the build errors and lint warnings in the console.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Build
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+npm run build
+```
 
-### Code Splitting
+Builds the app for production to the build folder. It correctly bundles React in production mode and optimizes the build for the best performance.
+The build is minified and the filenames include the hashes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Libraries
 
-### Analyzing the Bundle Size
+Main libraries used in this project:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [React](https://reactjs.org/ "React")
+- [React Router](https://v5.reactrouter.com/web/guides/quick-start "React Router")
+- [MUI](https://mui.com/ "MUI")
+- [Redux Toolkit](https://redux-toolkit.js.org/ "Redux Toolkit")
+- [Redux Persist](https://www.npmjs.com/package/redux-persist "Redux Persist")
+- [date-fns](https://date-fns.org/ "date-fns")
 
-### Making a Progressive Web App
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+John Valencia

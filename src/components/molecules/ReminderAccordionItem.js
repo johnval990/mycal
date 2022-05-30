@@ -35,7 +35,7 @@ const ReminderAccordionItem = ({ reminder, expanded, onChange, children }) => {
           </Box>
         </Box>
       </AccordionSummary>
-      <AccordionDetails sx={{ pt: 2, backgroundColor: "#f4f2f2" }}>
+      <AccordionDetails sx={{ pt: 2, backgroundColor: "#daedff" }}>
         {children}
       </AccordionDetails>
     </Accordion>
